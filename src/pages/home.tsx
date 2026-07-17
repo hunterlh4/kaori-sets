@@ -15,11 +15,6 @@ export function Home() {
 
   const handleSearchChange = (value: string) => {
     setSearchTerm(value)
-    
-    // Búsqueda en tiempo real - navegar cuando el usuario escriba
-    if (value.trim()) {
-      navigate(`/search?q=${encodeURIComponent(value)}`, { state: { from: 'home' } })
-    }
   }
 
   return (
@@ -52,7 +47,7 @@ export function Home() {
           <form onSubmit={handleSearchSubmit}>
             <motion.input
               type="text"
-              placeholder="Buscar productos..."
+              placeholder="Buscar sets..."
               value={searchTerm}
               onChange={(e) => handleSearchChange(e.target.value)}
               className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/70 text-lg md:text-xl font-medium tracking-wide w-full max-w-md focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 drop-shadow-lg"
