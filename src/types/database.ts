@@ -28,6 +28,7 @@ export interface Item {
   precio?: number
   slug: string
   imagen_url: string[]  // Ahora es array de strings
+  rareza: number // 1 común, 2 raro, 3 muy raro, 4 ultra raro
   estado: number // 0 inactivo, 1 activo, 2 agotado
   created_at: string
 }

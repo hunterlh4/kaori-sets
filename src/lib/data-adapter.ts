@@ -86,11 +86,23 @@ export class DataAdapter {
     )
   }
 
-  // Obtener items relacionados por cofre (excluyendo el actual)
+  // Obtener items relacionados por cofre (excluyendo el actual) - aleatorios
   static getRelatedItemsByChest(currentSlug: string, cofreId: number, limit: number = 3) {
-    return this.getItemsCompletos()
+    const relatedItems = this.getItemsCompletos()
       .filter(item => item.slug !== currentSlug && item.cofre_id === cofreId)
-      .slice(0, limit)
+    
+    // Función para mezclar array aleatoriamente (Fisher-Yates shuffle)
+    const shuffleArray = <T>(array: T[]): T[] => {
+      const shuffled = [...array]
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+      }
+      return shuffled
+    }
+    
+    // Mezclar aleatoriamente y tomar solo la cantidad solicitada
+    return shuffleArray(relatedItems).slice(0, limit)
   }
 }
 

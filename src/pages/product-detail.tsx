@@ -14,9 +14,19 @@ export function ProductDetail() {
   const { items } = useItems()
   
   const item = items.find((product) => product.slug === slug)
-  const related = item 
-    ? DataAdapter.getRelatedItemsByChest(slug!, item.cofre_id, 3)
-    : []
+  
+  // Estado para productos relacionados - solo se genera una vez por producto
+  const [related, setRelated] = useState<any[]>([])
+  const [relatedLoaded, setRelatedLoaded] = useState<string | null>(null)
+
+  // Generar productos relacionados solo cuando cambia el producto
+  useEffect(() => {
+    if (item && slug && relatedLoaded !== slug) {
+      const relatedItems = DataAdapter.getRelatedItemsByChest(slug, item.cofre_id, 3)
+      setRelated(relatedItems)
+      setRelatedLoaded(slug)
+    }
+  }, [slug, item?.cofre_id, relatedLoaded])
 
   const [selectedImage, setSelectedImage] = useState(0)
   const [selectedSize, setSelectedSize] = useState<string | null>(null)
