@@ -6,6 +6,7 @@ import { addToCart } from "@/lib/cart"
 import { sendProductToWhatsApp } from "@/lib/whatsapp"
 import { useState, useRef, useEffect } from "react"
 import { ImageLightbox } from "@/components/image-lightbox"
+import { ImageLoader, ProductImageLoader } from "@/components/image-loader"
 
 const SIZES = ["S", "M", "L", "XL"]
 
@@ -85,7 +86,7 @@ export function ProductDetail() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </button>
-            <img
+            <ImageLoader
               src={images[selectedImage]}
               alt={item.nombre}
               className="w-full h-auto object-cover border border-gray-100 dark:border-gray-700 transition-transform duration-200 scale-100"
@@ -110,7 +111,7 @@ export function ProductDetail() {
                       : "border-gray-200 dark:border-gray-700 hover:border-gray-400"
                   }`}
                 >
-                  <img
+                  <ImageLoader
                     src={img}
                     alt={`Vista ${i + 1}`}
                     className="w-full aspect-square object-cover"
@@ -257,7 +258,7 @@ export function ProductDetail() {
                         AGOTADO
                       </Badge>
                     )}
-                    <img
+                    <ImageLoader
                       src={relatedItem.imagen_url[0]}
                       alt={relatedItem.nombre}
                       className="absolute inset-0 w-full h-full object-cover scale-110 transition-transform duration-500 group-hover:scale-125"

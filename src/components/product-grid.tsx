@@ -6,6 +6,7 @@ import { useItems } from "@/lib/data-adapter"
 import type { ItemCompleto } from "@/types/database"
 import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
+import { ImageLoader } from "@/components/image-loader"
 
 interface ProductGridProps {
   items?: ItemCompleto[]
@@ -92,24 +93,28 @@ export function ProductGrid({ items: itemsProp, showIntroduction = false }: Prod
                 )}
                 
                 <AnimatePresence mode="sync" initial={false}>
-                  <motion.img
+                  <motion.div
                     key={`${item.id}-${
                       hoveredItemId === item.id && item.imagen_url.length > 1
                         ? item.imagen_url[galleryIndex]
                         : item.imagen_url[0]
                     }`}
-                    alt={item.nombre}
-                    className="absolute inset-0 w-full h-full object-cover scale-110"
-                    src={
-                      hoveredItemId === item.id && item.imagen_url.length > 1
-                        ? item.imagen_url[galleryIndex]
-                        : item.imagen_url[0]
-                    }
+                    className="absolute inset-0"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: IMAGE_TRANSITION_SECONDS, ease: "easeInOut" }}
-                  />
+                  >
+                    <ImageLoader
+                      src={
+                        hoveredItemId === item.id && item.imagen_url.length > 1
+                          ? item.imagen_url[galleryIndex]
+                          : item.imagen_url[0]
+                      }
+                      alt={item.nombre}
+                      className="w-full h-full object-cover scale-110"
+                    />
+                  </motion.div>
                 </AnimatePresence>
               </div>
             </Link>

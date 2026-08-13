@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { useHeroes } from "@/lib/data-adapter"
 import { useState } from "react"
 import { motion } from "framer-motion"
+import { HeroImageLoader } from "@/components/image-loader"
 
 export function Heroes() {
   const { heroes } = useHeroes()
@@ -46,14 +47,11 @@ export function Heroes() {
               to={`/search?q=${encodeURIComponent(hero.slug)}`}
               className="group block"
             >
-              <div className="relative w-full aspect-[16/9] overflow-hidden bg-gray-100 dark:bg-gray-800">
-                <img
-                  src={`/${hero.imagen_url}`}
-                  alt={hero.nombre}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-              </div>
+              <HeroImageLoader
+                src={`/${hero.imagen_url}`}
+                alt={hero.nombre}
+                className="group-hover:opacity-80 transition-opacity duration-300"
+              />
             </Link>
           ))}
         </div>
