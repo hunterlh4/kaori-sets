@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { navLinks } from "@/config/nav"
+import { sendContactToWhatsApp } from "@/lib/whatsapp"
 
 export function Footer() {
   return (
@@ -10,9 +11,9 @@ export function Footer() {
           <div>
             <h4 className="font-bold text-lg mb-6">Ubicación</h4>
             <address className="not-italic text-sm text-gray-400 space-y-2">
-              <p>Florencia</p>
-              <p>Colombia</p>
-              <p className="pt-2">+57 316 489 0901</p>
+              <p></p>
+              <p>Peru</p>
+              <p className="pt-2">+51 933 054 810</p>
             </address>
           </div>
 
@@ -90,7 +91,10 @@ export function Footer() {
               Sakura Drip es una marca de personalización. Utilizamos productos altamente
               garantizados. Si quieres un diseño diferente, puedes escribirnos a nuestro Instagram.
             </p>
-            <button className="inline-block bg-red-600 text-white font-bold py-3 px-8 text-sm uppercase tracking-widest hover:bg-red-700 transition">
+            <button 
+              onClick={sendContactToWhatsApp}
+              className="inline-block bg-red-600 text-white font-bold py-3 px-8 text-sm uppercase tracking-widest hover:bg-red-700 transition"
+            >
               Pedir diseño
             </button>
           </div>

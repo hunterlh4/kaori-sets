@@ -1,4 +1,4 @@
-const WA_NUMBER = "51900000000" // prefijo Perú + número
+const WA_NUMBER = "51933054810"
 
 export function sendCartToWhatsApp(items: { name: string; price: number; quantity: number }[], total: number) {
   const lines = items.map((i) => `• ${i.name} x${i.quantity} — S/ ${i.price * i.quantity}`)
@@ -8,5 +8,10 @@ export function sendCartToWhatsApp(items: { name: string; price: number; quantit
 
 export function sendProductToWhatsApp(name: string, price: number, quantity = 1) {
   const message = `Hola, quiero comprar:\n\n• ${name} x${quantity} — S/ ${price * quantity}`
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`, "_blank")
+}
+
+export function sendContactToWhatsApp() {
+  const message = "Hola, quiero contactarme contigo"
   window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`, "_blank")
 }
