@@ -26,17 +26,17 @@ export function Navbar() {
       <header className="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white dark:bg-gray-950 bg-opacity-95 shadow-sm dark:shadow-gray-800">
         <nav className="container mx-auto px-6 py-6 flex justify-between items-center">
           {/* Logo Section */}
-          <Link to="/" className="text-2xl font-bold tracking-widest dark:text-white">
+          <Link to="/" className="text-2xl font-bold tracking-widest text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 transition-colors">
             SAKURA DRIP
           </Link>
 
           {/* Navigation Links and Icons */}
           <div className="flex items-center space-x-8">
             {/* Desktop Menu */}
-            <ul className="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-wider dark:text-gray-300">
+            <ul className="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-wider text-gray-600 dark:text-gray-300">
               {navLinks.map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="hover:text-gray-600 dark:hover:text-gray-400 transition">
+                  <Link to={link.path} className="hover:text-gray-800 dark:hover:text-gray-100 transition-colors">
                     {link.name}
                   </Link>
                 </li>
@@ -47,7 +47,7 @@ export function Navbar() {
             <div className="flex items-center space-x-6">
               {/* Cart Icon */}
               <div
-                className="relative cursor-pointer dark:text-gray-300"
+                className="relative cursor-pointer text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100 transition-colors"
                 onClick={() => setIsCartOpen(true)}
                 title={`Items: ${cartCount} | Total: ${cartTotal} S/`}
               >
@@ -77,7 +77,7 @@ export function Navbar() {
               </div>
 
               {/* Search Icon */}
-              <div className="cursor-pointer dark:text-gray-300">
+              <div className="cursor-pointer text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100 transition-colors">
                 <svg
                   className="h-6 w-6"
                   fill="none"

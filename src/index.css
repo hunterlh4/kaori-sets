@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @import "tw-animate-css";
-@import "@fontsource-variable/roboto";
+@import "@fontsource-variable/inter";
 
 html,
 body,
