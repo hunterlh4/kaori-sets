@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://kaori-sets.vercel.app/sitemap.xml
+
+# Principales páginas
+Allow: /
+Allow: /heroes
+Allow: /search
+Allow: /item/*
+
+# Evitar indexar parámetros de búsqueda duplicados
+Disallow: /search?*&*

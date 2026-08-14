@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { useHeroes } from "@/lib/data-adapter"
 import { useState } from "react"
 import { motion } from "framer-motion"
+import { SEO } from "@/components/seo"
 import { HeroImageLoader } from "@/components/image-loader"
 
 export function Heroes() {
@@ -19,7 +20,13 @@ export function Heroes() {
   )
 
   return (
-    <main className="pt-20 pb-12">
+    <>
+      <SEO 
+        title="Héroes de Dota 2"
+        description="Explora todos los héroes de Dota 2 disponibles en Kaori Sets. Encuentra sets de tus héroes favoritos de fuerza, agilidad e inteligencia."
+        url="https://kaori-sets.vercel.app/heroes"
+      />
+      <main className="pt-20 pb-12">
       <div className="container mx-auto px-6">
         {/* Header with Search */}
         <div className="text-center mb-16 pt-8">
@@ -66,5 +73,6 @@ export function Heroes() {
         )}
       </div>
     </main>
+    </>
   )
 }

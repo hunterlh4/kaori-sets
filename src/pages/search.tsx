@@ -2,6 +2,7 @@ import { useSearchParams, useLocation } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { SearchProductList } from "@/components/search-product-list"
+import { SEO, useSearchSEO } from "@/components/seo"
 
 export function Search() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -29,8 +30,13 @@ export function Search() {
     }
   }
 
+  // SEO dinámico para la búsqueda
+  const seoProps = useSearchSEO(searchTerm)
+
   return (
-    <main className="pt-20">
+    <>
+      <SEO {...seoProps} />
+      <main className="pt-20">
       {/* Compact Search Header with Video Background */}
       <motion.section 
         initial={{ height: comesFromHome ? "100vh" : "300px" }}
@@ -93,5 +99,6 @@ export function Search() {
         <SearchProductList searchTerm={searchTerm} />
       </motion.div>
     </main>
+    </>
   )
 }

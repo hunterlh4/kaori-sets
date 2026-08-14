@@ -6,7 +6,8 @@ import { addToCart } from "@/lib/cart"
 import { sendProductToWhatsApp } from "@/lib/whatsapp"
 import { useState, useRef, useEffect } from "react"
 import { ImageLightbox } from "@/components/image-lightbox"
-import { ImageLoader, ProductImageLoader } from "@/components/image-loader"
+import { ImageLoader } from "@/components/image-loader"
+import { SEO, useProductSEO } from "@/components/seo"
 
 const SIZES = ["S", "M", "L", "XL"]
 
@@ -61,9 +62,14 @@ export function ProductDetail() {
   }
 
   const images = item.imagen_url
+  
+  // SEO dinámico para el producto
+  const seoProps = useProductSEO(item)
 
   return (
-    <main className="max-w-7xl mx-auto px-4 md:px-8 pt-28 pb-12">
+    <>
+      <SEO {...seoProps} />
+      <main className="max-w-7xl mx-auto px-4 md:px-8 pt-28 pb-12">
       {/* Product Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
 
@@ -289,5 +295,6 @@ export function ProductDetail() {
         />
       )}
     </main>
+    </>
   )
 }

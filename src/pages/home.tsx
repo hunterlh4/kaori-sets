@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { motion } from "framer-motion"
+import { SEO } from "@/components/seo"
 
 export function Home() {
   const navigate = useNavigate()
@@ -18,7 +19,9 @@ export function Home() {
   }
 
   return (
-    <div>
+    <>
+      <SEO />
+      <div>
       {/* Hero Section with Search */}
       <motion.section 
         className="relative h-screen w-full flex items-center justify-center overflow-hidden"
@@ -58,6 +61,7 @@ export function Home() {
         </motion.div>
       </motion.section>
     </div>
+    </>
   )
 }
 
